@@ -1,5 +1,5 @@
-Freebuff provider for Paseo. It detects an installed Freebuff CLI and registers Freebuff as a provider, while reporting when the current CLI cannot be driven by Paseo.
+Runs the installed Freebuff coding agent inside Paseo on macOS. It uses Freebuff's real interactive terminal, so Freebuff continues to control authentication, advertisements, model selection, approvals, and usage limits.
 
-The currently verified Freebuff CLI exposes an interactive TUI. It does not expose ACP, headless output, structured events, or a documented SDK that accepts the Freebuff device OAuth credential. This release therefore does not start sessions or claim Freebuff automation support. It does not read, convert, or transmit Freebuff credentials.
+Freebuff and tmux must be installed on the daemon machine and available on its PATH. Log in with Freebuff before creating an agent. If login is required, the provider returns the official Freebuff login URL.
 
-Freebuff must be installed separately and remain available on the daemon PATH. The provider reports the detected CLI version and an actionable unsupported-transport diagnostic. A future release can enable sessions only after Freebuff publishes a supported non-interactive interface that preserves authentication, ads, approvals, and usage limits.
+Prompts and repository contents are handled by Freebuff under its own service and privacy terms. Paseo receives snapshots of the Freebuff terminal. Session restoration and non-macOS platforms are not supported in this release.

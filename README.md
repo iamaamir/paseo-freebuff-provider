@@ -1,17 +1,19 @@
 # Paseo Freebuff provider
 
-Independent Paseo provider plugin for Freebuff.
+Runs installed Freebuff CLI inside Paseo on macOS.
 
-## Current status
+Requirements:
 
-Foundation and compatibility boundary only. Current Freebuff CLI is an interactive TUI. Verified integration research found no ACP transport, headless/JSON event mode, or documented SDK path for Freebuff device OAuth credentials. Provider registration detects the CLI but refuses to start an automated session instead of bypassing Freebuff controls.
+- Paseo 0.11.4 or newer
+- Freebuff CLI on daemon `PATH`
+- `tmux`
+- Active Freebuff account
 
-## Development
+The provider drives Freebuff's real interactive terminal. Freebuff keeps control of login, advertisements, model selection, approvals, and usage limits. Terminal output appears in Paseo as streaming assistant output.
 
 ```bash
 npm install
+npm test
 npm run typecheck
-npm run format:check
+paseo plugin install "$PWD"
 ```
-
-Do not use a Freebuff device token as a Codebuff API key. Session support requires an official Freebuff interface that preserves login, advertisements, approvals, and usage limits.
