@@ -1,9 +1,11 @@
-Launches Freebuff in a real Paseo terminal from a workspace.
+This plugin opens Freebuff in a real Paseo terminal.
 
-Type `/freebuff-terminal` in the composer, optionally followed by an initial prompt. Paseo creates a terminal, waits for Freebuff’s ready screen, and submits the prompt. Afterwards, interact with Freebuff directly in its terminal.
+Use `/freebuff-terminal` in the composer. Add text after the command if you want to send an initial prompt. The plugin waits for Freebuff’s ready screen before sending the text.
 
 Requirements:
 
-- Freebuff installed on the daemon host and authenticated
-- A connected workspace
+- Freebuff installed on the daemon host
+- Freebuff logged in
 - Paseo 0.11.4 or newer
+
+This plugin uses terminals, not agent providers. It does not expose models, providers, or structured events.
