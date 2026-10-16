@@ -1,0 +1,30 @@
+{
+  "name": "@iamaamir/paseo-freebuff",
+  "private": false,
+  "version": "0.1.0",
+  "description": "Freebuff provider plugin for Paseo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamaamir/paseo-freebuff-provider"
+  },
+  "files": [
+    "paseo-plugin.json",
+    "OVERVIEW.md",
+    "index.server.ts",
+    "server/",
+    "docs/"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "test": "tsx --test test/**/*.test.ts"
+  },
+  "devDependencies": {
+    "@getpaseo/plugin": "0.11.4",
+    "@types/node": "^22.10.0",
+    "prettier": "^3.5.3",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
