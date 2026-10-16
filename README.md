@@ -17,3 +17,9 @@ npm test
 npm run typecheck
 paseo plugin install "$PWD"
 ```
+
+Terminal profiles
+
+Paseo also supports terminal profiles. You can add a permanent `Freebuff` profile in Paseo Settings
+under the connected host's Terminal Profiles and use command `freebuff`. After that, the terminal can
+be launched without the plugin slash command.
