@@ -20,11 +20,17 @@ export default function contribute(client: PluginClientContext) {
         name: "Freebuff",
       });
       if (initialPrompt) {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 4000));
         try {
-          handle.sendKeys([initialPrompt, "Enter"]);
+          handle.sendKeys([initialPrompt]);
         } catch (error) {
-          console.error("Freebuff initial prompt failed", error);
+          console.error("Freebuff initial prompt text failed", error);
+        }
+        await new Promise((resolve) => setTimeout(resolve, 400));
+        try {
+          handle.sendKeys(["Enter"]);
+        } catch (error) {
+          console.error("Freebuff initial prompt enter failed", error);
         }
       }
     },
