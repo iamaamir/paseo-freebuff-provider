@@ -1,7 +1,7 @@
 {
   "id": "freebuff",
-  "name": "Freebuff provider",
-  "description": "Freebuff coding agent provider for Paseo",
+  "name": "Freebuff terminal",
+  "description": "Launch Freebuff in a Paseo terminal",
   "requirements": {
     "paseo": ">=0.11.4"
   }

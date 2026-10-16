@@ -1,5 +1,9 @@
-Runs the installed Freebuff coding agent inside Paseo on macOS. It uses Freebuff's real interactive terminal, so Freebuff continues to control authentication, advertisements, model selection, approvals, and usage limits.
+Launches Freebuff in a real Paseo terminal from a workspace.
 
-Freebuff and tmux must be installed on the daemon machine and available on its PATH. Log in with Freebuff before creating an agent. If login is required, the provider returns the official Freebuff login URL.
+Type `/freebuff-terminal` in the composer, optionally followed by an initial prompt. Paseo creates a terminal, waits for Freebuff’s ready screen, and submits the prompt. Afterwards, interact with Freebuff directly in its terminal.
 
-Prompts and repository contents are handled by Freebuff under its own service and privacy terms. Paseo receives snapshots of the Freebuff terminal. Session restoration and non-macOS platforms are not supported in this release.
+Requirements:
+
+- Freebuff installed on the daemon host and authenticated
+- A connected workspace
+- Paseo 0.11.4 or newer

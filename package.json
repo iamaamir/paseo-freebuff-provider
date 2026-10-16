@@ -2,7 +2,7 @@
   "name": "@iamaamir/paseo-freebuff",
   "private": false,
   "version": "0.1.0",
-  "description": "Freebuff provider plugin for Paseo",
+  "description": "Launch Freebuff in a Paseo terminal",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iamaamir/paseo-freebuff-provider"
@@ -11,16 +11,13 @@
     "paseo-plugin.json",
     "OVERVIEW.md",
     "icon.svg",
-    "index.client.tsx",
-    "index.server.ts",
-    "server/",
-    "docs/"
+    "index.client.tsx"
   ],
   "scripts": {
     "typecheck": "tsc --noEmit",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "test": "tsx --test test/**/*.test.ts"
+    "test": "echo \"No automated tests for terminal-mode MVP\""
   },
   "devDependencies": {
     "@getpaseo/plugin": "0.11.4",
