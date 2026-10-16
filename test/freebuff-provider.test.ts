@@ -15,6 +15,7 @@ const launch = { command: "freebuff", args: [], env: {} };
 
 class FakeTerminal implements TerminalTransport {
   prompts: string[] = [];
+  interrupted = false;
   closed = false;
 
   constructor(private readonly options: TerminalFactoryOptions) {}
@@ -31,7 +32,9 @@ class FakeTerminal implements TerminalTransport {
     this.prompts.push(text);
   }
 
-  async interrupt() {}
+  async interrupt() {
+    this.interrupted = true;
+  }
 
   async close() {
     this.closed = true;
@@ -174,4 +177,53 @@ test("completes one prompt after running screen returns to ready", async () => {
     events.filter((event) => event.type === "session.prompt_result").length,
     1,
   );
+});
+
+
+test("closes a session and closes its terminal", async () => {
+  const { connection, events, terminal } = await connectionEvents();
+  await connection.send({
+    type: "session.open",
+    requestId: "open-1",
+    sessionId: "session-1",
+    config: sessionConfig,
+    history: "skip",
+  });
+  await connection.send({
+    type: "session.close",
+    requestId: "close-1",
+    sessionId: "session-1",
+  });
+
+  assert.equal(terminal().closed, true);
+  assert.equal(events.some((event) => event.type === "session.closed"), true);
+});
+
+test("interrupts an active turn exactly once", async () => {
+  const { connection, events, terminal } = await connectionEvents();
+  await connection.send({
+    type: "session.open",
+    requestId: "open-1",
+    sessionId: "session-1",
+    config: sessionConfig,
+    history: "skip",
+  });
+  await connection.send({
+    type: "session.prompt",
+    sessionId: "session-1",
+    prompt: {
+      clientMessageId: "message-1",
+      delivery: "auto",
+      input: { type: "message", content: [{ type: "text", text: "hello" }] },
+    },
+  });
+  await connection.send({
+    type: "session.interrupt",
+    requestId: "interrupt-1",
+    sessionId: "session-1",
+  });
+
+  assert.equal(terminal().interrupted, true);
+  const turns = events.filter((event) => event.type === "session.turn");
+  assert.deepEqual(turns.map((event) => event.state), ["started", "canceled"]);
 });
