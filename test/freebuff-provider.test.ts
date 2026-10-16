@@ -179,7 +179,6 @@ test("completes one prompt after running screen returns to ready", async () => {
   );
 });
 
-
 test("closes a session and closes its terminal", async () => {
   const { connection, events, terminal } = await connectionEvents();
   await connection.send({
@@ -196,7 +195,10 @@ test("closes a session and closes its terminal", async () => {
   });
 
   assert.equal(terminal().closed, true);
-  assert.equal(events.some((event) => event.type === "session.closed"), true);
+  assert.equal(
+    events.some((event) => event.type === "session.closed"),
+    true,
+  );
 });
 
 test("interrupts an active turn exactly once", async () => {
@@ -225,5 +227,8 @@ test("interrupts an active turn exactly once", async () => {
 
   assert.equal(terminal().interrupted, true);
   const turns = events.filter((event) => event.type === "session.turn");
-  assert.deepEqual(turns.map((event) => event.state), ["started", "canceled"]);
+  assert.deepEqual(
+    turns.map((event) => event.state),
+    ["started", "canceled"],
+  );
 });

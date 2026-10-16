@@ -130,7 +130,7 @@ export class FreebuffTerminalProcess {
     this.requireRunning();
     const bufferName = `prompt-${randomUUID()}`;
     const file = join(tmpdir(), `${bufferName}.txt`);
-    await writeFile(file, `\u001b[200~${text}\u001b[201~`, { mode: 0o600 });
+    await writeFile(file, text, { mode: 0o600 });
     try {
       await execCommand("tmux", ["load-buffer", "-b", bufferName, file], {
         timeout: 5000,
@@ -140,6 +140,7 @@ export class FreebuffTerminalProcess {
         ["paste-buffer", "-d", "-b", bufferName, "-t", this.sessionName],
         { timeout: 5000 },
       );
+      await new Promise((resolve) => setTimeout(resolve, 100));
       await execCommand(
         "tmux",
         ["send-keys", "-t", this.sessionName, "Enter"],
