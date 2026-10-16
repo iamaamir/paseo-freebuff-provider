@@ -11,6 +11,7 @@
     "paseo-plugin.json",
     "OVERVIEW.md",
     "icon.svg",
+    "index.client.tsx",
     "index.server.ts",
     "server/",
     "docs/"
