@@ -1,0 +1,8 @@
+{
+  "id": "freebuff",
+  "name": "Freebuff provider",
+  "description": "Freebuff coding agent provider for Paseo",
+  "requirements": {
+    "paseo": ">=0.11.4"
+  }
+}
