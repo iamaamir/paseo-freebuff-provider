@@ -4,5 +4,6 @@
   "description": "Launch Freebuff in a Paseo terminal",
   "requirements": {
     "paseo": ">=0.11.4"
-  }
+  },
+  "icon": "icon.png"
 }
