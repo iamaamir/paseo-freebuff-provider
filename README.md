@@ -1,12 +1,13 @@
 # Paseo Freebuff terminal
 
-This plugin runs Freebuff as a real terminal inside Paseo.
+This plugin runs the installed Freebuff coding agent in a Paseo terminal.
 
 ## Requirements
 
 - Freebuff installed on the daemon host
 - Freebuff logged in
 - Paseo 0.11.4 or newer
+- `tmux` is not required
 
 ## Install
 
@@ -16,18 +17,19 @@ npm run typecheck
 paseo plugin install "$PWD"
 ```
 
-## Usage
+## Use
+
+Open a workspace and run:
 
 ```text
 /freebuff-terminal
-/freebuff-terminal tell me a joke
+/freebuff-terminal inspect this repository and summarize its architecture
 ```
 
-For the second command, the plugin launches Freebuff, waits for its ready screen, submits the prompt, and then leaves the terminal in your control.
+The plugin launches Freebuff, waits for its ready screen, submits any included prompt, then gives control to Freebuff.
 
-## Limits
+## Notes
 
-- The plugin uses Paseo terminals only.
-- It does not expose a provider.
-- It does not parse Freebuff output.
-- Model selection and login remain inside Freebuff.
+- Model selection, login, and usage limits remain inside Freebuff.
+- This plugin does not expose a provider, model list, or structured agent events.
+- Use Paseo Terminal Profiles for a permanent Freebuff terminal button.
