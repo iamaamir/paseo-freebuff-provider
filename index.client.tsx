@@ -19,19 +19,18 @@ export default function contribute(client: PluginClientContext) {
         args: [],
         name: "Freebuff",
       });
-      if (initialPrompt) {
-        await new Promise((resolve) => setTimeout(resolve, 4000));
-        try {
+      if (!initialPrompt) return;
+
+      for (let attempt = 0; attempt < 100; attempt += 1) {
+        const capture = await handle.capture().catch(() => null);
+        const screen = capture?.lines?.join("\n") ?? "";
+        if (screen.includes("Enter a coding task or / for commands")) {
           handle.sendKeys([initialPrompt]);
-        } catch (error) {
-          console.error("Freebuff initial prompt text failed", error);
-        }
-        await new Promise((resolve) => setTimeout(resolve, 400));
-        try {
+          await new Promise((resolve) => setTimeout(resolve, 100));
           handle.sendKeys(["Enter"]);
-        } catch (error) {
-          console.error("Freebuff initial prompt enter failed", error);
+          return;
         }
+        await new Promise((resolve) => setTimeout(resolve, 100));
       }
     },
   });
