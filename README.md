@@ -23,8 +23,13 @@ Open a workspace and run:
 /freebuff-terminal inspect this repository and summarize its architecture
 ```
 
-
 ## Notes
 
 - Model selection, login, and usage limits remain inside Freebuff.
 - This plugin does not expose a provider, model list, or structured agent events.
+
+## Future plans
+
+- Add a separate Codebuff SDK agent provider for paid API-key accounts. Do not present it as Freebuff free-account support.
+- Add ACP support when Freebuff exposes a documented, supported, non-interactive transport.
+- Keep the terminal launcher as the stable free-user path.
